@@ -1,8 +1,11 @@
 import sys
 import requests
 import re
+import os
 from time import sleep
 import json
+
+group_link_format = "https://ssau.ru/rasp?groupId={0}"
 
 
 def get_from(link: str, count=10):
@@ -12,32 +15,28 @@ def get_from(link: str, count=10):
             return reply
         count -= 1
         sleep(1)
-    return "fail"
+    print("Fail:", link)
+    sys.exit(os.EX_UNAVAILABLE)
 
-a = requests.get("https://ssau.ru/rasp")
-b = re.findall(r"/rasp/faculty/.*?(?=</a>)", a.text)
 
-info = []
-faculty = {}
-for i in b:
-    info.append("https://ssau.ru" + re.sub("\".*?>", "", i).strip())
+b = re.findall(r"/rasp/faculty/.*?(?=</a>)", get_from("https://ssau.ru/rasp"))
+
+info = ["https://ssau.ru" + re.sub("\".*?>", "", i).strip() for i in b]
 print("Got", len(info), "faculties")
+
+
+faculty = {}
 for i in range(len(info)):
     tmp = info[i].split(" ", 1)
     faculty[tmp[1]] = [tmp[0]]
 
+for title, data in faculty.items():
+    raw = get_from(data[0])
+    for i in re.findall(r"(?<=groupId=).*?\d{4}-\d{6}D", raw):
+        t = re.sub("\".*(?=\d{4}-\d{6}D)", " ", i)
+        print(t)
 
-key0 = list(faculty.keys())[0]
-link0 = faculty[key0][0]
-print("Getting", link0)
-fac_req = get_from(link0)
-if fac_req == "fail":
-    print("Service not available")
-    sys.exit()
 
-gr_ids = re.findall(r"(?<=groupId=).*?\d{4}-\d{6}D", fac_req)
-for i in gr_ids:
-    re.sub("\"(?=)\d{4}-\d{6}D")
 # with open("fac_log1.txt", "w") as f:
 #     f.write(fac_req.text)
 
