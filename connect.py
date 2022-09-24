@@ -1,50 +1,45 @@
-import requests
+from mywebfunc import *
 import re
 import json
-from time import time
-link1 = "https://ssau.ru/rasp?groupId=531873998&selectedWeek=4&selectedWeekday=1"
+link1 = "https://ssau.ru/rasp?groupId=531873987"
 time1 = time()
 
+line_filters = [
+    r"schedule__item(?=(?:_show)? ?\")",
+    r"(?<=time-item\">).+?(?=<)",
+    r"(?<=head-date\">).*?(?=<)",
+    r"(?<=color-type-\d\">).*?(?=<)",
+    r"(?<=place\">).*?(?=<)",
+    r"(?<=\d\" >).*?(?=<)",
+    r"(?<=group\">).*?(?=<)",
+    r"Подгруппы: \d"
+]
+line_filters1 = list(map(lambda x: r"(?:{0})".format(x), line_filters))
+lines = re.findall("|".join(line_filters1), get_from(link1))
+for i in range(len(lines)): lines[i] = lines[i].strip()
+while "" in lines: lines.remove("")
 
-responce = requests.get(link1)
-filter_string = r"(?:schedule__item (?:schedule__item_show)?\".*)|(?:time-item.*?</)|(?:schedule__head-date.*?</)|(?:discipline.*?</)|(?:schedule__place.*?</)|(?:href=\"/rasp\?staffId=\d+\".*?</)|(?:schedule__group.*?</)"
-lines = re.findall(filter_string, responce.text)
 
-
+rows = {'dates':[lines[i] for i in range(6)]}
 match = re.fullmatch
 p_time = r"\d{2}:\d{2}"
-p_subj = r"subject"
-info = []
-
-
-for line in lines:
-    print(line)
-    tmp = '<' + line + '>'
-    if tmp.find('schedule__item') < 0:
-        tmp = re.sub("<.*?>", "", tmp).strip()
-        if len(tmp) > 0: info.append(tmp)
-    else:
-        info.append("subject")
-rows = {'dates':[info[i] for i in range(6)]}
-
+p_subj = r"schedule__item(?:_show)?"
 
 i = 6
-while i < len(info):
-    if match(p_time, info[i]):
-        rows[info[i] + " " + info[i+1]] = []
+while i < len(lines):
+    if match(p_time, lines[i]):
+        rows[lines[i] + " " + lines[i+1]] = []
         i += 2
-    elif match(p_subj, info[i]):
+    elif match(p_subj, lines[i]):
         last_key = list(rows.keys())[len(rows.keys())-1]
         rows[last_key].append("")
         i += 1
     else:
         last_key = list(rows.keys())[len(rows.keys())-1]
         last_ind = len(rows[last_key])-1
-        rows[last_key][last_ind] += info[i] + ";"
+        rows[last_key][last_ind] += lines[i] + ";"
         i += 1
 
-print("time passed:", round(time() - time1, 3), "sec")
 if int(input("dump? (1/0): ")) == 1:
-    with open("rows.json", "w") as f:
+    with open("group_schedule.json", "w") as f:
         json.dump(rows, f, indent=4, ensure_ascii=False)
-

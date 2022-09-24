@@ -1,46 +1,20 @@
-import sys
-import requests
+from mywebfunc import *
 import re
-import os
-from time import sleep, time
 import json
 
-time1 = time()
-group_link_format = "https://ssau.ru/rasp?groupId={0}"
-
-
-def get_from(link: str, count=10) -> str:
-    while count > 0:
-        reply = requests.get(link).text
-        if reply.find("503 Service Temporarily Unavailable") < 0:
-            return reply
-        count -= 1
-        sleep(1)
-    print("Fail:", link)
-    sys.exit(os.EX_UNAVAILABLE)
-
-
-b = re.findall(r"/rasp/faculty/.*?(?=</a>)", get_from("https://ssau.ru/rasp"))
-
-info = ["https://ssau.ru" + re.sub("\".*?>", "", i).strip() for i in b]
-print(len(info), "faculties")
-
-
-faculty = {}
-for i in range(len(info)):
-    tmp = info[i].split(" ", 1)
-    faculty[tmp[1]] = [tmp[0]]
 
 groups = {}
+b = re.findall(r"(?<=/rasp/faculty/)\d+(?=\?course=1)", get_from("https://ssau.ru/rasp"))
+for grId in b:
+    raw = get_from("https://ssau.ru/rasp/faculty/{0}?course=1".format(grId))
+    courses = list(map(lambda x: int(x), re.findall(r"(?<=course=)\d+", raw)))
+    if len(courses) == 0: continue
+    for cId in range(max(courses)):
+        raw = get_from("https://ssau.ru/rasp/faculty/{0}?course={1}".format(grId, cId))
+        for i in re.findall(r"(?<=groupId=).*?\d{4}-\d{6}D", raw):
+            t = re.sub("\".*(?=\d{4}-\d{6}D)", " ", i).split()
+            groups[t[1]] = GROUP_SCHED_TEMP.format(t[0])
 
-for title, data in faculty.items():
-    raw = get_from(data[0])
-    for i in re.findall(r"(?<=groupId=).*?\d{4}-\d{6}D", raw):
-        t = re.sub("\".*(?=\d{4}-\d{6}D)", " ", i).split()
-        groups[t[1]] = group_link_format.format(t[0])
 
-
-with open("groups.json", "w") as f:
+with open("schedule_groups.json", "w") as f:
     json.dump(groups, f, indent=4, ensure_ascii=False, sort_keys=True)
-
-print("time passed:", round(time() - time1, 3), "sec")
