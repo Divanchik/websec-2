@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{ title }}</title>
+        <link rel="icon" type="image/png" href="favicon.png">
+        <style>
+            table, th, td {
+                border-collapse: collapse;
+                border: 2px solid #a6d5fa;
+                font-family: Roboto, sans-serif;
+            }
+            th, td {
+                padding: 5px;
+            }
+            #tablecaption {
+                background: linear-gradient(90deg, rgba(39,128,227,1) 0%, rgba(102,16,242,1) 100%);
+                font-family: Roboto, sans-serif;
+                font-size: 30px;
+                color: #f8f9fa;
+                padding: 20px;
+                border-radius: 10px;
+            }
+            .timecell {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <p><div id="tablecaption">{{ title }}</div></p>
+        <table>
+            <tr>
+                <th>Время</th>
+                {% for date in dates %}
+                <th>{{ date }}</th>
+                {% endfor %}
+            </tr>
+            {% for key, item in info.items() %}
+            <tr>
+                <td class="timecell">{{ key }}</td>
+                {% for subject in item %}
+                <td>{{ subject }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
