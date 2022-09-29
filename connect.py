@@ -1,8 +1,14 @@
+import argparse
 from mywebfunc import *
 import re
 import json
-link1 = "https://ssau.ru/rasp?groupId=531873998"
 
+parser = argparse.ArgumentParser(description='Get schedule.')
+parser.add_argument("dest", type=str)
+parser.add_argument("id", type=str)
+args = parser.parse_args()
+link1 = f"https://ssau.ru/rasp?{args.dest}Id={args.id}"
+print(link1)
 
 line_filters = [
     r".*schedule__item[^s].*",

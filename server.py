@@ -11,7 +11,7 @@ def update_info():
 
 @app.route("/")
 def main():
-    with open("group_schedule.json") as f:
+    with open("group_schedule.json", encoding='utf-8') as f:
         info: dict = load(f)
     reqId = request.args.getlist("Id")
     request_date_diff = datetime.now() - last_request_date

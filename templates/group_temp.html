@@ -12,6 +12,11 @@
             }
             th, td {
                 padding: 5px;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #373a3c;
+                text-align: left;
             }
             #tablecaption {
                 background: linear-gradient(90deg, rgba(39,128,227,1) 0%, rgba(102,16,242,1) 100%);
@@ -23,6 +28,10 @@
             }
             .timecell {
                 text-align: center;
+            }
+            .maincell {
+                text-align: left;
+                vertical-align: top;
             }
         </style>
     </head>
@@ -39,7 +48,11 @@
             <tr>
                 <td class="timecell">{{ key }}</td>
                 {% for subject in item %}
-                <td>{{ subject }}</td>
+                <td class="maincell">
+                    {% for line in subject %}
+                    {{ line }}<br>
+                    {% endfor %}
+                </td>
                 {% endfor %}
             </tr>
             {% endfor %}
