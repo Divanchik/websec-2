@@ -1,6 +1,7 @@
 from mywebfunc import *
 import re
 import json
+from tqdm import tqdm
 
 teachers = {}
 template = "https://ssau.ru/staff?page={0}&letter=0"
@@ -8,7 +9,7 @@ template = "https://ssau.ru/staff?page={0}&letter=0"
 
 raw = re.sub("\n", " ", get_from("https://ssau.ru/staff"))
 page_max = max(list(map(lambda x: int(x), re.findall(r"(?<=page=)\d+", raw))))
-for i in range(page_max):
+for i in tqdm(range(page_max)):
     tmp_raw = re.sub("\n", " ", get_from(template.format(i+1)))
     tmp_info = re.findall(r"https://ssau.ru/staff/\d+.*?(?=</a>)", tmp_raw)
     for j in tmp_info:

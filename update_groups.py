@@ -1,11 +1,12 @@
 from mywebfunc import *
 import re
 import json
+from tqdm import tqdm
 
 
 groups = {}
 b = re.findall(r"(?<=/rasp/faculty/)\d+(?=\?course=1)", get_from("https://ssau.ru/rasp"))
-for grId in b:
+for grId in tqdm(b):
     raw = get_from("https://ssau.ru/rasp/faculty/{0}?course=1".format(grId))
     courses = list(map(lambda x: int(x), re.findall(r"(?<=course=)\d+", raw)))
     if len(courses) == 0: continue

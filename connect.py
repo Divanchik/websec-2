@@ -4,11 +4,10 @@ import re
 import json
 
 parser = argparse.ArgumentParser(description='Get schedule.')
-parser.add_argument("dest", type=str)
-parser.add_argument("id", type=str)
+parser.add_argument("link", type=str)
 args = parser.parse_args()
-link1 = f"https://ssau.ru/rasp?{args.dest}Id={args.id}"
-print(link1)
+link1 = args.link
+
 
 line_filters = [
     r".*schedule__item[^s].*",
@@ -22,6 +21,7 @@ line_filters = [
 ]
 
 raw = re.sub(r".*schedule__head\".*", "", get_from(link1))
+raw = re.sub(r".*week-nav.*", "", raw)
 line_filters1 = list(map(lambda x: f"(?:{x})", line_filters))
 lines = re.findall("|".join(line_filters1), raw)
 for i in range(len(lines)): lines[i] = lines[i].strip()
@@ -36,9 +36,12 @@ for i in range(len(lines)):
         lines[i] = "schedule__item"
 while "" in lines: lines.remove("")
 
-
-# for i in lines:
-#     print(i)
+if len(lines) == 0:
+    with open("group_schedule.json", "w") as f:
+        json.dump({}, f, indent=4, ensure_ascii=False)
+    exit()
+with open("connect_log.json", "w") as f:
+    json.dump(lines, f, indent=4, ensure_ascii=False)
 
 dates = [lines[i] for i in range(6)]
 rows = {}
@@ -61,6 +64,6 @@ while i < len(lines):
         rows[last_key][last_ind].append(lines[i])
         i += 1 
 
-if int(input("dump? (1/0): ")) == 1:
-    with open("group_schedule.json", "w") as f:
+
+with open("group_schedule.json", "w") as f:
         json.dump([dates, rows], f, indent=4, ensure_ascii=False)
