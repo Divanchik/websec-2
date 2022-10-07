@@ -1,4 +1,8 @@
 #formdiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 10px;
     border: 2px solid #0d47a1;
     border-radius: 15px;
     margin: 5px;
@@ -6,18 +10,33 @@
     padding: 20px;
 }
 #formbutton {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
     background: linear-gradient(135deg, rgba(39,128,227,1) 0%, rgba(102,16,242,1) 100%);
     border: 0px;
     border-radius: 15px;
     color: #f8f9fa;
     font-family: Roboto, sans-serif;
     font-size: medium;
-    padding: 10px;
-    float: right;
-    width: 10%;
+    padding: 1em 2em;
 }
 #forminput {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
     border: 1px solid #868e96;
     padding: 10px;
-    width: 80%;
+}
+#grouplist_link {
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(135deg, rgba(39,128,227,1) 0%, rgba(102,16,242,1) 100%);
+    border: 0px;
+    border-radius: 15px;
+    color: #f8f9fa;
+    font-family: Roboto, sans-serif;
+    font-size: medium;
+    padding: 1em 2em;
+    text-decoration: none;
 }
