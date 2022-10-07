@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Справочник групп</title>
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+        <link href="{{ url_for('static', filename='grouplist_style.css') }}" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="faculties_list">
+            {% for title, fac in faculties.items() %}
+            <div class="faculty_item"><a href="/grouplist?facultyId={{ fac['id'] }}">{{ title }}</a></div>
+            {% endfor %}
+        </div>
+    </body>
+</html>

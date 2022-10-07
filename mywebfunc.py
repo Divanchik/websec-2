@@ -4,13 +4,12 @@ import os
 from time import sleep, time
 
 def get_from(link: str, count=10) -> str:
+    link_status: int
     for i in range(count):
-        reply = requests.get(link).text
-        if reply.find("503 Service Temporarily Unavailable") < 0:
-            return reply
+        reply = requests.get(link)
+        link_status = reply.status_code
+        if reply.status_code in range(200, 300):
+            return reply.text
         sleep(1)
-    print("Fail:", link)
+    print(f"Status {link_status}:", link)
     sys.exit(os.EX_UNAVAILABLE)
-
-STAFF_SCHED_TEMP = "https://ssau.ru/rasp?staffId={0}"
-GROUP_SCHED_TEMP = "https://ssau.ru/rasp?groupId={0}"

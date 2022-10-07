@@ -1,0 +1,81 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+.faculties_list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.faculty_item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 1rem;
+}
+
+.faculty_item:hover {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 123, 255, .15);
+    transform: scale(1.01);
+}
+
+a {
+    font-family: Montserrat;
+    font-style: normal;
+    color: rgba(0, 0, 0, .8);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 20px;
+    text-align: left;
+    text-decoration: none;
+}
+
+.faculties_list .faculty_item:nth-child(5n+1) {
+    border-left: 5px solid #007bff
+}
+
+.faculties_list .faculty_item:nth-child(5n+1):hover a {
+    color: #007bff;
+    text-decoration: none
+}
+
+.faculties_list .faculty_item:nth-child(5n+2) {
+    border-left: 5px solid #ff9800
+}
+
+.faculties_list .faculty_item:nth-child(5n+2):hover a {
+    color: #ff9800;
+    text-decoration: none
+}
+
+.faculties_list .faculty_item:nth-child(5n+3) {
+    border-left: 5px solid #443fa2
+}
+
+.faculties_list .faculty_item:nth-child(5n+3):hover a {
+    color: #443fa2;
+    text-decoration: none
+}
+
+.faculties_list .faculty_item:nth-child(5n+4) {
+    border-left: 5px solid #43a047
+}
+
+.faculties_list .faculty_item:nth-child(5n+4):hover a {
+    color: #43a047;
+    text-decoration: none
+}
+
+.faculties_list .faculty_item:nth-child(5n+5) {
+    border-left: 5px solid #0d47a1
+}
+
+.faculties_list .faculty_item:nth-child(5n+5):hover a {
+    color: #0d47a1;
+    text-decoration: none
+}

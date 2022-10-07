@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+        <style>
+            @import url(https://fonts.googleapis.com/css?family=Montserrat);
+            h1 {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: 700;
+                font-size: 34px;
+                line-height: 41px;
+                letter-spacing: .25px;
+                color: #373a3c;
+            }
+            div {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                border-radius: 5px;
+                border-top: 5px solid #2780e3;
+                box-shadow: 0 1px 2px rgba(0,0,0,.1),0 2px 4px rgba(0,0,0,.1),0 2px 4px rgba(0,123,255,.15);
+                padding: 1rem;
+            }
+            a {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                margin-right: 16px;
+                margin-bottom: 16px;
+                padding: .5rem 1rem;
+                border: 1px solid #2780e3;
+
+                font-family: Montserrat;
+                font-style: normal;
+                font-size: 16px;
+                line-height: 20px;
+                font-weight: 550;
+                letter-spacing: .05em;
+
+                color: #2780e3;
+                text-decoration: none;
+                min-width: 155px;
+            }
+            a:hover {
+                background-color: #2780e3;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>{{ title }}</h1>
+        <div>
+            {% for name, id in groups.items() %}
+            <a href="/schedule?groupId={{ id }}">{{ name }}</a>
+            {% endfor %}
+        </div>
+    </body>
+</html>
