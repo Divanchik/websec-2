@@ -1,10 +1,12 @@
-import argparse
+# import argparse
 from json import dump, dumps
 import re
 import requests
 import sys
 import os
 from time import sleep
+
+print("argv1", sys.argv[1])
 
 def get_from(link: str, count=10) -> str:
     link_status: int
@@ -18,12 +20,12 @@ def get_from(link: str, count=10) -> str:
     sys.exit(os.EX_UNAVAILABLE)
 
 
-parser = argparse.ArgumentParser(description='Get schedule.')
-parser.add_argument("link", type=str)
-args = parser.parse_args()
+# parser = argparse.ArgumentParser(description='Get schedule.')
+# parser.add_argument("link", type=str)
+# args = parser.parse_args()
 
 data = {}
-page_raw = get_from(args.link)
+page_raw = get_from(sys.argv[1])
 page_raw = re.sub("\n", " ", page_raw)
 
 # title
@@ -34,6 +36,7 @@ data['title'] = title.group(1).strip()
 weeks = re.findall("(\d) неделя", page_raw)
 weeks = list(map(lambda x: int(x), weeks))
 data['weeks'] = weeks
+print(sys.argv[1], data)
 
 # days dates
 head_dates = re.findall("schedule__head-date.*?(\d{2}\.\d{2}\.\d{4})", page_raw)

@@ -53,19 +53,21 @@ def get_schedule():
 
     id_type = list(request.args.keys())[0]
     id_val = request.args.getlist(id_type)[0]
-    # weekreq = request.args.getlist("selectedWeek")[0]
-    os.system(f"python3 schedule.py https://ssau.ru/rasp?{id_type}={id_val}")
+    weekreq = request.args.getlist("selectedWeek")
+    if len(weekreq) == 0:
+        os.system(f"python3 schedule.py https://ssau.ru/rasp?{id_type}={id_val}")
+    else:
+        os.system(f"python3 schedule.py \"https://ssau.ru/rasp?{id_type}={id_val}&selectedWeek={weekreq[0]}\"")
     with open("schedule.json") as f: info = load(f)
 
     if len(info) == 0:
         print("No schedule or not implemented error!")
         return render_template('index.html')
-    return render_template('schedule_temp.html', info=info)
+    return render_template('schedule_temp.html', info=info, id_type=id_type, id_val=id_val)
         
     
 @app.route("/") # Поисковая страница
 def main():
-    print(request.args.keys())
     sreq = request.args.getlist("SearchRequest")
     if len(sreq) == 0: return render_template('index.html')
 

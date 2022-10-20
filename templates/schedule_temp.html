@@ -8,30 +8,32 @@
     </head>
     <body>
         <p><div id="tablecaption">{{ info['title'] }}</div></p>
-        <div class="weeksdiv">
-            <div class="weekprv">{{ info['weeks'][0] }} неделя</div>
-            <div class="weekcur">{{ info['weeks'][1] }} неделя</div>
-            <div class="weeknxt">{{ info['weeks'][2] }} неделя</div>
-        </div>
-        <table>
-            <tr>
-                <th>Время</th>
-                {% for date in info['dates'] %}
-                <th>{{ date }}</th>
-                {% endfor %}
-            </tr>
-            {% for row in info['rows'] %}
-            <tr>
-                <td class="timecell">{{ row['timespan'][0] }}<br>{{ row['timespan'][1] }}</td>
-                {% for item in row['items'] %}
-                <td>
-                    {% for lesson in item %}
-                    <div class="lessondiv lesson_{{ lesson['type'] }}">{{ lesson['title'] }}<br>{{ lesson['place'] }}</div>
+        <div class="schedinfo">
+            <div class="weeksdiv">
+                <div class="weekprv"><a href="/schedule?{{ id_type }}={{ id_val }}&selectedWeek={{ info['weeks'][0] }}">{{ info['weeks'][0] }} неделя</a></div>
+                <div class="weekcur"><a href="/schedule?{{ id_type }}={{ id_val }}&selectedWeek={{ info['weeks'][1] }}">{{ info['weeks'][1] }} неделя</a></div>
+                <div class="weeknxt"><a href="/schedule?{{ id_type }}={{ id_val }}&selectedWeek={{ info['weeks'][2] }}">{{ info['weeks'][2] }} неделя</a></div>
+            </div>
+            <table>
+                <tr>
+                    <th>Время</th>
+                    {% for date in info['dates'] %}
+                    <th>{{ date }}</th>
                     {% endfor %}
-                </td>
+                </tr>
+                {% for row in info['rows'] %}
+                <tr>
+                    <td class="timecell">{{ row['timespan'][0] }}<br>{{ row['timespan'][1] }}</td>
+                    {% for item in row['items'] %}
+                    <td>
+                        {% for lesson in item %}
+                        <div class="lessondiv lesson_{{ lesson['type'] }}">{{ lesson['title'] }}<br>{{ lesson['place'] }}</div>
+                        {% endfor %}
+                    </td>
+                    {% endfor %}
+                </tr>
                 {% endfor %}
-            </tr>
-            {% endfor %}
-        </table>
+            </table>
+        </div>
     </body>
 </html>
