@@ -49,6 +49,7 @@ def get_grouplist():
 @app.route("/schedule") # Расписание
 def get_schedule():
     schedreq = [request.args.getlist("groupId"), request.args.getlist("staffId")]
+    weekreq = request.args.getlist("selectedWeek")
     ans = None
 
     if len(schedreq[0]) != 0: # if group requested
