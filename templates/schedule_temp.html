@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{ info['title'] }}</title>
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+        <link href="{{ url_for('static', filename='schedule_style.css') }}" rel="stylesheet" />
+    </head>
+    <body>
+        <p><div id="tablecaption">{{ info['title'] }}</div></p>
+        <div class="weeksdiv">
+            <div class="weekprv">{{ info['weeks'][0] }} неделя</div>
+            <div class="weekcur">{{ info['weeks'][1] }} неделя</div>
+            <div class="weeknxt">{{ info['weeks'][2] }} неделя</div>
+        </div>
+        <table>
+            <tr>
+                <th>Время</th>
+                {% for date in info['dates'] %}
+                <th>{{ date }}</th>
+                {% endfor %}
+            </tr>
+            {% for row in info['rows'] %}
+            <tr>
+                <td class="timecell">{{ row['timespan'][0] }}<br>{{ row['timespan'][1] }}</td>
+                {% for item in row['items'] %}
+                <td>
+                    {% for lesson in item %}
+                    <div class="lessondiv lesson_{{ lesson['type'] }}">{{ lesson['title'] }}<br>{{ lesson['place'] }}</div>
+                    {% endfor %}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

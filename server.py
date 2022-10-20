@@ -35,6 +35,7 @@ def search(req: str):
 
 @app.route("/grouplist") # Справочник групп
 def get_grouplist():
+    print(request.args.keys())
     facreq = request.args.getlist("facultyId")
     with open("data_groups.json") as f: info = load(f)
     if len(facreq) == 0: return render_template('grouplist_temp.html', faculties=info)
@@ -48,48 +49,30 @@ def get_grouplist():
 
 @app.route("/schedule") # Расписание
 def get_schedule():
-    schedreq = [request.args.getlist("groupId"), request.args.getlist("staffId")]
-    weekreq = request.args.getlist("selectedWeek")
-    ans = None
+    if len(list(request.args.keys())) == 0: return render_template('index.html')
 
-    if len(schedreq[0]) != 0: # if group requested
-        res_id = schedreq[0][0]
-        os.system(f"python3 connect.py https://ssau.ru/rasp?groupId={res_id}")
-        with open("data_groups.json") as f: info = load(f)
-        for fac in info.values():
-            for gn, gi in fac['groups'].items():
-                if gi == res_id: ans = gn
-        
+    id_type = list(request.args.keys())[0]
+    id_val = request.args.getlist(id_type)[0]
+    # weekreq = request.args.getlist("selectedWeek")[0]
+    os.system(f"python3 schedule.py https://ssau.ru/rasp?{id_type}={id_val}")
+    with open("schedule.json") as f: info = load(f)
 
-    elif len(schedreq[1]) != 0: # if staff requested
-        res_id = schedreq[1][0]
-        os.system(f"python3 connect.py https://ssau.ru/rasp?staffId={res_id}")
-        with open("data_staff.json") as f: info = load(f)
-        for sn, si in info.items():
-            if si == res_id: ans = sn
-    
-    else:
-        return redirect("/", 400)
-    if ans == None: return redirect("/", 404)
-
-    with open("group_schedule.json", encoding='utf-8') as f:
-        info: dict = load(f)
     if len(info) == 0:
         print("No schedule or not implemented error!")
         return render_template('index.html')
-    return render_template('group_temp.html', dates=info[0], info=info[1], title=ans)
+    return render_template('schedule_temp.html', info=info)
         
     
 @app.route("/") # Поисковая страница
 def main():
+    print(request.args.keys())
     sreq = request.args.getlist("SearchRequest")
     if len(sreq) == 0: return render_template('index.html')
 
     res_id = search(sreq[0])
-    
     if res_id == None:
         print("Unable to find requested schedule!")
-        return redirect("/", 404)
+        return render_template('index.html')
     return redirect(f"/schedule{res_id}")
 
 

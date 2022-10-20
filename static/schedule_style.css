@@ -28,10 +28,15 @@ tr td:nth-child(n+2) {
     color: #373a3c;
 }
 
-th, td {
+th {
     padding: 5px;
     font-family: Roboto, sans-serif;
 }
+td {
+    font-family: Roboto, sans-serif;
+    padding: 0;
+}
+
 table, th, td {
     border: 2px solid #a6d5fa;
 }
@@ -43,4 +48,47 @@ table, th, td {
     color: #f8f9fa;
     padding: 20px;
     border-radius: 10px;
+}
+
+.lesson_1 {
+    border-left: 3px solid var(--lesson1color);
+}
+
+.lesson_2 {
+    border-left: 3px solid var(--lesson2color);
+}
+
+.lesson_3 {
+    border-left: 3px solid var(--lesson3color);
+}
+
+.lesson_4 {
+    border-left: 3px solid var(--lesson4color);
+}
+
+
+.lessondiv {
+    width: 100%;
+    height: inherit;
+    padding: 5px;
+}
+
+.weeksdiv {
+    display: flex;
+    width: 100%;
+}
+
+.weekprv {
+    display: flex;
+    flex-grow: 1;
+}
+.weekcur {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+.weeknxt {
+    display: flex;
+    flex-grow: 1;
+    justify-content: right;
 }

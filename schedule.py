@@ -1,5 +1,5 @@
 import argparse
-from json import dump
+from json import dump, dumps
 import re
 import requests
 import sys
@@ -60,3 +60,5 @@ for i in range(len(time_spans)):
 
 with open("schedule.json", "w") as f:
         dump(data, f, indent=4, ensure_ascii=False)
+
+# print(dumps(data, indent=4, ensure_ascii=False))
