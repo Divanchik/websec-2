@@ -56,14 +56,14 @@ def get_schedule():
     id_val = request.args.getlist(id_type)[0]
     weekreq = request.args.getlist("selectedWeek")
     if len(weekreq) == 0:
-        if platform() == "linux":
+        if platform == "linux":
             os.system(f"python3 schedule.py https://ssau.ru/rasp?{id_type}={id_val}")
-        elif platform() == "win32":
+        elif platform == "win32":
             os.system(f"python schedule.py https://ssau.ru/rasp?{id_type}={id_val}")
     else:
-        if platform() == "linux":
+        if platform == "linux":
             os.system(f"python3 schedule.py \"https://ssau.ru/rasp?{id_type}={id_val}&selectedWeek={weekreq[0]}\"")
-        elif platform() == "win32":
+        elif platform == "win32":
             os.system(f"python schedule.py \"https://ssau.ru/rasp?{id_type}={id_val}&selectedWeek={weekreq[0]}\"")
     with open("schedule.json", encoding='utf-8') as f: info = load(f)
 
