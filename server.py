@@ -27,7 +27,7 @@ def search(req: str):
         with open("data_staff.json", encoding='utf-8') as f:
             info = load(f)
         for sn, si in info.items():
-            if sn.find(staffreq[0]) >= 0:
+            if re.search(f"{staffreq[0].strip()} |{staffreq[0].strip()}$", sn) is not None:
                 return f"?staffId={si}"
     
     print("No match for group or staff pattern!")
@@ -50,7 +50,10 @@ def get_grouplist():
 
 @app.route("/schedule") # Расписание
 def get_schedule():
-    if len(list(request.args.keys())) == 0: return render_template('index.html')
+    arguments = list(request.args.keys())
+    for i in arguments:
+        if re.fullmatch("staffId|groupId|selectedWeek", i) == None:
+            return redirect("/")
 
     id_type = list(request.args.keys())[0]
     id_val = request.args.getlist(id_type)[0]

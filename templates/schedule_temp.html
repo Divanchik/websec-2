@@ -27,7 +27,11 @@
                     {% for item in row['items'] %}
                     <td>
                         {% for lesson in item %}
-                        <div class="lessondiv lesson_{{ lesson['type'] }}">{{ lesson['title'] }}<br>{{ lesson['place'] }}</div>
+                        <div class="lessondiv lesson_{{ lesson['type'] }}">
+                            {{ lesson['title'] }}<br>
+                            {{ lesson['place'] }}<br>
+                            <a class="stafflink" href="/schedule{{ lesson['staffid'] }}">{{ lesson['staff'] }}</a>
+                        </div>
                         {% endfor %}
                     </td>
                     {% endfor %}
