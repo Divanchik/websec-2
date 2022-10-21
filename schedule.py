@@ -61,7 +61,7 @@ for i in range(len(time_spans)):
     for j in range(len(head_dates)):
         data['rows'][i]['items'].append(cells[i*len(head_dates)+j])
 
-with open("schedule.json", "w") as f:
+with open("schedule.json", "w", encoding='utf-8') as f:
         dump(data, f, indent=4, ensure_ascii=False)
 
 # print(dumps(data, indent=4, ensure_ascii=False))
