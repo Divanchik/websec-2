@@ -3,6 +3,7 @@ import re
 from flask import Flask, request, render_template, redirect
 from json import load
 import os
+from sys import platform
 app = Flask(__name__)
 last_request_date = datetime.now()
 group_pattern = r"\d{4}(?:[- ]\d{6}D?)?"
@@ -15,7 +16,7 @@ def search(req: str):
     print(groupreq, staffreq, "found matches")
 
     if len(groupreq) > 0: # if group requested
-        with open("data_groups.json") as f:
+        with open("data_groups.json", encoding='utf-8') as f:
             info = load(f)
         for fac in info.values():
             for gn, gi in fac['groups'].items():
@@ -23,7 +24,7 @@ def search(req: str):
                     return f"?groupId={gi}"
     
     elif len(staffreq) > 0: # if staff requested
-        with open("data_staff.json") as f:
+        with open("data_staff.json", encoding='utf-8') as f:
             info = load(f)
         for sn, si in info.items():
             if sn.find(staffreq[0]) >= 0:
@@ -37,7 +38,7 @@ def search(req: str):
 def get_grouplist():
     print(request.args.keys())
     facreq = request.args.getlist("facultyId")
-    with open("data_groups.json") as f: info = load(f)
+    with open("data_groups.json", encoding='utf-8') as f: info = load(f)
     if len(facreq) == 0: return render_template('grouplist_temp.html', faculties=info)
 
     for title, fac in info.items():
@@ -55,10 +56,16 @@ def get_schedule():
     id_val = request.args.getlist(id_type)[0]
     weekreq = request.args.getlist("selectedWeek")
     if len(weekreq) == 0:
-        os.system(f"python3 schedule.py https://ssau.ru/rasp?{id_type}={id_val}")
+        if platform() == "linux":
+            os.system(f"python3 schedule.py https://ssau.ru/rasp?{id_type}={id_val}")
+        elif platform() == "win32":
+            os.system(f"python schedule.py https://ssau.ru/rasp?{id_type}={id_val}")
     else:
-        os.system(f"python3 schedule.py \"https://ssau.ru/rasp?{id_type}={id_val}&selectedWeek={weekreq[0]}\"")
-    with open("schedule.json") as f: info = load(f)
+        if platform() == "linux":
+            os.system(f"python3 schedule.py \"https://ssau.ru/rasp?{id_type}={id_val}&selectedWeek={weekreq[0]}\"")
+        elif platform() == "win32":
+            os.system(f"python schedule.py \"https://ssau.ru/rasp?{id_type}={id_val}&selectedWeek={weekreq[0]}\"")
+    with open("schedule.json", encoding='utf-8') as f: info = load(f)
 
     if len(info) == 0:
         print("No schedule or not implemented error!")
