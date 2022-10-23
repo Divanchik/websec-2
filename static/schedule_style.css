@@ -1,71 +1,26 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 :root {
-    --lesson1color: #43a047;
-    --lesson2color: #443fa2;
-    --lesson3color: #ff3d00;
-    --lesson4color: #f0ad4e;
+    --color1: #43a047;
+    --color2: #443fa2;
+    --color3: #ff3d00;
+    --color4: #f0ad4e;
 }
 
-table {
-    table-layout: fixed;
-    border-collapse: collapse;
-    width: 100%;
-}
-tr th {
-    width: calc((100% - 50px)/6);
-}
-tr th:nth-child(1) {
-    width: 50px;
+.lesson-type-1 {
+    border-left: 3px solid var(--color1);
 }
 
-tr td:nth-child(1) {
-    text-align: center;
-}
-tr td:nth-child(n+2) {
-    vertical-align: top;
-    font-size: 0.9rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #373a3c;
+.lesson-type-2 {
+    border-left: 3px solid var(--color2);
 }
 
-th {
-    padding: 5px;
-    font-family: Roboto, sans-serif;
-}
-td {
-    font-family: Roboto, sans-serif;
-    padding: 0;
+.lesson-type-3 {
+    border-left: 3px solid var(--color3);
 }
 
-table, th, td {
-    border: 2px solid #a6d5fa;
-}
-
-#tablecaption {
-    background: linear-gradient(90deg, rgba(39,128,227,1) 0%, rgba(102,16,242,1) 100%);
-    font-family: Roboto, sans-serif;
-    font-size: 30px;
-    color: #f8f9fa;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.lesson_1 {
-    border-left: 3px solid var(--lesson1color);
-}
-
-.lesson_2 {
-    border-left: 3px solid var(--lesson2color);
-}
-
-.lesson_3 {
-    border-left: 3px solid var(--lesson3color);
-}
-
-.lesson_4 {
-    border-left: 3px solid var(--lesson4color);
+.lesson-type-4 {
+    border-left: 3px solid var(--color4);
 }
 
 
@@ -75,45 +30,195 @@ table, th, td {
     padding: 5px;
 }
 
-.weeksdiv {
-    display: flex;
+.timetable {
     width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    box-sizing: border-box;
 }
 
-.weekprv {
+.infoblock {
     display: flex;
-    flex-grow: 1;
-    padding: 15px;
-}
-.weekcur {
-    display: flex;
-    flex-grow: 1;
-    padding: 15px;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 1rem;
+    background: linear-gradient(124.4deg,#2196f3,#443fa2 86.01%);
+    margin-bottom: 36px;
+    margin-top: 2rem;
+    border-radius: 5px;
     justify-content: center;
 }
-.weeknxt {
+
+.infoblock h2 {
     display: flex;
-    flex-grow: 1;
-    padding: 15px;
-    justify-content: right;
+    color: white;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 28px;
+    justify-content: center;
 }
 
-.schedinfo {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 123, 255, .15);
+.legend-type-1 {
+    background-color: var(--color1);
+}
+
+.legend-type-2 {
+    background-color: var(--color2);
+}
+
+.legend-type-3 {
+    background-color: var(--color3);
+}
+
+.legend-type-4 {
+    background-color: var(--color4);
+}
+
+.legend {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.legend div {
+    display: flex;
+    box-sizing: border-box;
+    font-family: Roboto,sans-serif;
+    margin-bottom: .5rem;
+    padding: .2rem .3rem;
+    color: hsla(0,0%,100%,.85);
+    margin-right: .5rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.schednav {
+    display: flex;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.1),0 2px 4px rgba(0,0,0,.1),0 2px 4px rgba(0,123,255,.15);
+    flex-direction: column;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 1rem;
+    width: 100%;
+    font-family: Roboto, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.week-nav {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    color: #2780e3;
+}
+
+.weekday-nav {
+    display: none;
+}
+
+.week-nav-prev, .week-nav-next, .week-nav-current {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 a {
-    font-family: Montserrat;
-    font-style: normal;
-    font-size: 16px;
-    line-height: 20px;
-    font-weight: 550;
-    letter-spacing: .05em;
-
-    color: #2780e3;
     text-decoration: none;
+    background-color: transparent;
 }
 
-.stafflink {
-    font-size: 14px;
+.schedule {
+    display: grid;
+    grid-template-columns: 65px repeat(6,1fr);
+    box-sizing: border-box;
+}
+
+.s_item, .s_time {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #a6d5fa;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #373a3c;
+}
+
+.s_head, .s_time {
+    align-items: center;
+    justify-content: center;
+    padding: .5rem;
+}
+
+#larrow-white, #rarrow-white {
+    display: none;
+}
+
+@media (aspect-ratio < 1) {
+    #larrow, #rarrow {
+        display: none;
+    }
+    #larrow-white, #rarrow-white {
+        display: flex;
+    }
+    .schedule {
+        grid-template-columns: 70px 1fr;
+    }
+    .s_item {
+        display: none;
+    }
+    .s_item_show {
+        display: flex;
+    }
+    .week-nav {
+        color: white;
+        padding: 1rem;
+    }
+    .week-nav-prev span, .week-nav-next span {
+        display: none;
+    }
+    .weekday-nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        height: 55px;
+        background-color: hsla(0,0%,100%,.3);
+    }
+    .weekday-nav a {
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        flex-grow: 1;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        max-width: 45px;
+        color: white;
+    }
+    .navigation {
+        padding: 0 !important;
+        background: linear-gradient(124.4deg,#2196f3,#443fa2 86.01%);
+    }
+    .weekday-active {
+        background-color: hsla(0,0%,100%,.4);
+        color: #2780e3 !important;
+    }
 }

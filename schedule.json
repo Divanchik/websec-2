@@ -1,48 +1,48 @@
 {
     "title": "6412-100503D",
     "weeks": [
-        7,
         8,
-        9
+        9,
+        10
     ],
     "dates": [
-        "17.10.2022",
-        "18.10.2022",
-        "19.10.2022",
-        "20.10.2022",
-        "21.10.2022",
-        "22.10.2022"
+        "24.10.2022",
+        "25.10.2022",
+        "26.10.2022",
+        "27.10.2022",
+        "28.10.2022",
+        "29.10.2022"
     ],
     "weekdays": [
         [
-            "weekday-nav__item_active",
+            "",
             "пн",
-            "17"
+            "24"
         ],
         [
             "",
             "вт",
-            "18"
+            "25"
         ],
         [
             "",
             "ср",
-            "19"
+            "26"
         ],
         [
             "",
             "чт",
-            "20"
+            "27"
         ],
         [
-            "",
+            "weekday-active",
             "пт",
-            "21"
+            "28"
         ],
         [
             "",
             "сб",
-            "22"
+            "29"
         ]
     ],
     "rows": [
@@ -53,23 +53,23 @@
             ],
             "items": [
                 {
+                    "is_showing": "",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "",
+                    "lessons": []
+                },
+                {
                     "is_showing": "s_item_show",
-                    "lessons": []
-                },
-                {
-                    "is_showing": "",
-                    "lessons": []
-                },
-                {
-                    "is_showing": "",
-                    "lessons": []
-                },
-                {
-                    "is_showing": "",
-                    "lessons": []
-                },
-                {
-                    "is_showing": "",
                     "lessons": []
                 },
                 {
@@ -93,7 +93,7 @@
             ],
             "items": [
                 {
-                    "is_showing": "s_item_show",
+                    "is_showing": "",
                     "lessons": []
                 },
                 {
@@ -117,7 +117,7 @@
                     ]
                 },
                 {
-                    "is_showing": "",
+                    "is_showing": "s_item_show",
                     "lessons": []
                 },
                 {
@@ -141,47 +141,8 @@
             ],
             "items": [
                 {
-                    "is_showing": "s_item_show",
-                    "lessons": [
-                        {
-                            "type": "1",
-                            "title": " Методы оптимизации",
-                            "place": " ON-LINE - 18",
-                            "staffid": "?staffId=65417001",
-                            "staff": " Ковалев А.А. "
-                        }
-                    ]
-                },
-                {
                     "is_showing": "",
-                    "lessons": [
-                        {
-                            "type": "3",
-                            "title": " Методы оптимизации",
-                            "place": " 219 - 14",
-                            "staffid": "?staffId=65417001",
-                            "staff": " Ковалев А.А. "
-                        }
-                    ]
-                },
-                {
-                    "is_showing": "",
-                    "lessons": [
-                        {
-                            "type": "2",
-                            "title": " Безопасность сетей ЭВМ",
-                            "place": " 102а - 3",
-                            "staffid": "?staffId=123278664",
-                            "staff": " Кузнецов М.В. "
-                        },
-                        {
-                            "type": "2",
-                            "title": " Безопасность сетей ЭВМ",
-                            "place": " 101а - 3",
-                            "staffid": "?staffId=259269374",
-                            "staff": " Ротенштейн И.В. "
-                        }
-                    ]
+                    "lessons": []
                 },
                 {
                     "is_showing": "",
@@ -189,6 +150,14 @@
                 },
                 {
                     "is_showing": "",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "s_item_show",
                     "lessons": [
                         {
                             "type": "2",
@@ -220,7 +189,7 @@
             ],
             "items": [
                 {
-                    "is_showing": "s_item_show",
+                    "is_showing": "",
                     "lessons": [
                         {
                             "type": "1",
@@ -233,34 +202,7 @@
                 },
                 {
                     "is_showing": "",
-                    "lessons": [
-                        {
-                            "type": "3",
-                            "title": " Надёжность и качество программного обеспечения",
-                            "place": " 608 - 18",
-                            "staffid": "?staffId=335804343",
-                            "staff": " Егорова А.А. "
-                        }
-                    ]
-                },
-                {
-                    "is_showing": "",
-                    "lessons": [
-                        {
-                            "type": "2",
-                            "title": " Безопасность сетей ЭВМ",
-                            "place": " 102а - 3",
-                            "staffid": "?staffId=123278664",
-                            "staff": " Кузнецов М.В. "
-                        },
-                        {
-                            "type": "2",
-                            "title": " Безопасность сетей ЭВМ",
-                            "place": " 101а - 3",
-                            "staffid": "?staffId=259269374",
-                            "staff": " Ротенштейн И.В. "
-                        }
-                    ]
+                    "lessons": []
                 },
                 {
                     "is_showing": "",
@@ -268,6 +210,10 @@
                 },
                 {
                     "is_showing": "",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "s_item_show",
                     "lessons": [
                         {
                             "type": "2",
@@ -291,7 +237,7 @@
             ],
             "items": [
                 {
-                    "is_showing": "s_item_show",
+                    "is_showing": "",
                     "lessons": [
                         {
                             "type": "1",
@@ -307,29 +253,10 @@
                     "lessons": [
                         {
                             "type": "3",
-                            "title": " Цифровая обработка сигналов",
-                            "place": " 201 - 18",
-                            "staffid": "?staffId=380087762",
-                            "staff": " Денисова А.Ю. "
-                        }
-                    ]
-                },
-                {
-                    "is_showing": "",
-                    "lessons": [
-                        {
-                            "type": "2",
-                            "title": " Методы оптимизации",
-                            "place": " 102а - 3",
-                            "staffid": "?staffId=65417001",
-                            "staff": " Ковалев А.А. "
-                        },
-                        {
-                            "type": "2",
-                            "title": " Надёжность и качество программного обеспечения",
-                            "place": " 101а - 3",
-                            "staffid": "?staffId=335804343",
-                            "staff": " Егорова А.А. "
+                            "title": " Философия",
+                            "place": " 355 - 5",
+                            "staffid": "",
+                            "staff": "Гапаров И.А."
                         }
                     ]
                 },
@@ -339,6 +266,10 @@
                 },
                 {
                     "is_showing": "",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "s_item_show",
                     "lessons": [
                         {
                             "type": "2",
@@ -350,7 +281,7 @@
                         {
                             "type": "2",
                             "title": " Базы данных",
-                            "place": " 516 - 14",
+                            "place": " 519 - 14",
                             "staffid": "?staffId=66443001",
                             "staff": " Попова-Коварцева Д.А. "
                         }
@@ -358,15 +289,7 @@
                 },
                 {
                     "is_showing": "",
-                    "lessons": [
-                        {
-                            "type": "1",
-                            "title": " Философия",
-                            "place": " ON-LINE - 18",
-                            "staffid": "?staffId=443996999",
-                            "staff": " Огнев А.Н. "
-                        }
-                    ]
+                    "lessons": []
                 }
             ]
         },
@@ -377,14 +300,14 @@
             ],
             "items": [
                 {
-                    "is_showing": "s_item_show",
+                    "is_showing": "",
                     "lessons": [
                         {
                             "type": "1",
-                            "title": " Надёжность и качество программного обеспечения",
+                            "title": " Методы оптимизации",
                             "place": " ON-LINE - 18",
-                            "staffid": "?staffId=60125001",
-                            "staff": " Гашников М.В. "
+                            "staffid": "?staffId=65417001",
+                            "staff": " Ковалев А.А. "
                         }
                     ]
                 },
@@ -393,29 +316,10 @@
                     "lessons": [
                         {
                             "type": "3",
-                            "title": " Философия",
-                            "place": " 337 - 5",
-                            "staffid": "",
-                            "staff": "Гапаров И.А."
-                        }
-                    ]
-                },
-                {
-                    "is_showing": "",
-                    "lessons": [
-                        {
-                            "type": "2",
-                            "title": " Методы оптимизации",
-                            "place": " 102а - 3",
-                            "staffid": "?staffId=65417001",
-                            "staff": " Ковалев А.А. "
-                        },
-                        {
-                            "type": "2",
-                            "title": " Надёжность и качество программного обеспечения",
-                            "place": " 101а - 3",
-                            "staffid": "?staffId=335804343",
-                            "staff": " Егорова А.А. "
+                            "title": " Компьютерная алгебра",
+                            "place": " 608 - 18",
+                            "staffid": "?staffId=490578188",
+                            "staff": " Козлова Ю.Х. "
                         }
                     ]
                 },
@@ -425,6 +329,10 @@
                 },
                 {
                     "is_showing": "",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "s_item_show",
                     "lessons": [
                         {
                             "type": "2",
@@ -436,7 +344,7 @@
                         {
                             "type": "2",
                             "title": " Базы данных",
-                            "place": " 516 - 14",
+                            "place": " 519 - 14",
                             "staffid": "?staffId=66443001",
                             "staff": " Попова-Коварцева Д.А. "
                         }

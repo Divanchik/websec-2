@@ -6,7 +6,7 @@ import sys
 import os
 from time import sleep
 
-# print("argv1", sys.argv[1])
+print("argv1", sys.argv[1])
 
 def get_from(link: str, count=10) -> str:
     link_status: int
@@ -32,11 +32,12 @@ page_raw = re.sub("\n", " ", page_raw)
 title = re.search("<h2 class=\"h2-text info-block__title\">(.*?)</h2>", page_raw)
 data['title'] = title.group(1).strip()
 
+
 # weeks
 weeks = re.findall("(\d{1,2}) неделя", page_raw)
 weeks = list(map(lambda x: int(x), weeks))
 data['weeks'] = weeks
-# print(sys.argv[1], data)
+print(sys.argv[1], data)
 
 # days dates
 head_dates = re.findall("schedule__head-date.*?(\d{2}\.\d{2}\.\d{4})", page_raw)
@@ -44,6 +45,11 @@ data['dates'] = head_dates
 
 # weekday nav items
 weekdays = re.findall("class=\"weekday-nav__item (weekday-nav__item_active|) \" ><div class=\"caption-text weekday-nav__item-weekday\"> ([а-я]+)</div><div class=\"subtitle-text weekday-nav__item-date\"> ([\d]+)", page_raw)
+print(weekdays)
+for i in range(len(weekdays)):
+    weekdays[i] = list(weekdays[i])
+    if weekdays[i][0] == "weekday-nav__item_active":
+        weekdays[i][0] = "weekday-active"
 data['weekdays'] = weekdays
 
 data['rows'] = []
@@ -59,6 +65,7 @@ items = re.findall("<div class=\"schedule__item (schedule__item_show|)\">(.*?)</
 cells = []
 for i in items:
     is_showing = "s_item_show" if i[0]=="schedule__item_show" else ""
+    print(i[0], is_showing)
     lessons = re.findall(lesson_group, i[1])
     cells.append({'is_showing':is_showing, 'lessons':[{'type':j[1], 'title':j[2], 'place':j[3], 'staffid':j[4], 'staff':j[5]} for j in lessons]})
 

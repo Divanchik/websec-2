@@ -16,25 +16,52 @@
                 <div class="legend-type-4">Другое</div>
             </div>
             <div class="schednav">
+                <!-- navigation -->
                 <div class="navigation">
+                    <!-- week navigation -->
                     <div class="week-nav">
-                        <a class="week-nav-prev">
-                            <img src="{{ url_for('static', filename='chevron-left.svg') }}" />
-                            <img src="{{ url_for('static', filename='chevron-left-white.svg') }}" />
+                        <a class="week-nav-prev" href="/schedule?{{ id_type }}={{ id_val }}&selectedWeek={{ info['weeks'][0] }}&selectedWeekday=1">
+                            <img id="larrow" src="{{ url_for('static', filename='chevron-left.svg') }}" />
+                            <img id="larrow-white" src="{{ url_for('static', filename='chevron-left-white.svg') }}" />
                             <span>{{ info['weeks'][0] }} неделя</span>
                         </a>
                         <div class="week-nav-current">{{ info['weeks'][1] }} неделя</div>
-                        <a class="week-nav-next">
+                        <a class="week-nav-next" href="/schedule?{{ id_type }}={{ id_val }}&selectedWeek={{ info['weeks'][2] }}&selectedWeekday=1">
                             <span>{{ info['weeks'][2] }} неделя</span>
-                            <img src="{{ url_for('static', filename='chevron-right-white.svg') }}" />
-                            <img src="{{ url_for('static', filename='chevron-right.svg') }}" />
+                            <img id="rarrow-white" src="{{ url_for('static', filename='chevron-right-white.svg') }}" />
+                            <img id="rarrow" src="{{ url_for('static', filename='chevron-right.svg') }}" />
                         </a>
                     </div>
+                    <!-- day navigation -->
                     <div class="weekday-nav">
-                        
+                        {% for i in range(6) %}
+                        <a class="weekday-nav_item {{ info['weekdays'][i][0] }}" href="/schedule?{{ id_type }}={{ id_val }}&selectedWeek={{ info['weeks'][1] }}&selectedWeekday={{ i+1 }}">{{ info['weekdays'][i][1] }}<br>{{ info['weekdays'][i][2] }}</a>
+                        {% endfor %}
                     </div>
                 </div>
-                <div class="schedule"></div>
+                <!-- schedule -->
+                <div class="schedule">
+                    <!-- table header -->
+                    <div class="s_item s_head">Время</div>
+                    {% for date in info['dates'] %}
+                    <div class="s_item s_head">{{ date }}</div>
+                    {% endfor %}
+                    <!-- table rows -->
+                    {% for row in info['rows'] %}
+                    <div class="s_time">{{ row['timespan'][0] }}<br>{{ row['timespan'][1] }}</div>
+                    {% for item in row['items'] %}
+                    <div class="s_item {{ item['is_showing'] }}">
+                        {% for lesson in item['lessons'] %}
+                        <div class="lessondiv lesson-type-{{ lesson['type'] }}">
+                            {{ lesson['title'] }}<br>
+                            {{ lesson['place'] }}<br>
+                            <a class="stafflink" href="/schedule{{ lesson['staffid'] }}">{{ lesson['staff'] }}</a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </body>
