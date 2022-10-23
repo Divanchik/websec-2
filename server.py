@@ -39,7 +39,7 @@ def get_grouplist():
     print(request.args.keys())
     facreq = request.args.getlist("facultyId")
     with open("data_groups.json", encoding='utf-8') as f: info = load(f)
-    if len(facreq) == 0: return render_template('grouplist_temp.html', faculties=info)
+    if len(facreq) == 0: return render_template('faculties_temp.html', faculties=info)
 
     for title, fac in info.items():
         if fac['id'] == facreq[0]:     
@@ -50,24 +50,20 @@ def get_grouplist():
 
 @app.route("/schedule") # Расписание
 def get_schedule():
+    # search incorrect arguments
     arguments = list(request.args.keys())
     for i in arguments:
-        if re.fullmatch("staffId|groupId|selectedWeek", i) == None:
-            return redirect("/")
+        if re.fullmatch("staffId|groupId|selectedWeek|selectedWeekday", i) == None:
+            return redirect("/", 400)
 
     id_type = list(request.args.keys())[0]
     id_val = request.args.getlist(id_type)[0]
-    weekreq = request.args.getlist("selectedWeek")
-    if len(weekreq) == 0:
-        if platform == "linux":
-            os.system(f"python3 schedule.py https://ssau.ru/rasp?{id_type}={id_val}")
-        elif platform == "win32":
-            os.system(f"python schedule.py https://ssau.ru/rasp?{id_type}={id_val}")
-    else:
-        if platform == "linux":
-            os.system(f"python3 schedule.py \"https://ssau.ru/rasp?{id_type}={id_val}&selectedWeek={weekreq[0]}\"")
-        elif platform == "win32":
-            os.system(f"python schedule.py \"https://ssau.ru/rasp?{id_type}={id_val}&selectedWeek={weekreq[0]}\"")
+    week = request.args.getlist("selectedWeek")
+    weekday = request.args.getlist("selectedWeekday")
+    option_week = "" if len(week) == 0 else f"&selectedWeek={week[0]}"
+    option_day = "" if len(weekday) == 0 else f"&selectedWeekday={weekday[0]}"
+    py_com = "python3" if platform == "linux" else "win32"
+    os.system(f"{py_com} schedule.py https://ssau.ru/rasp?{id_type}={id_val}{option_week}{option_day}")
     with open("schedule.json", encoding='utf-8') as f: info = load(f)
 
     if len(info) == 0:

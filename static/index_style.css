@@ -12,31 +12,45 @@
 #formbutton {
     display: flex;
     flex-direction: row;
-    margin-left: auto;
     background: linear-gradient(135deg, rgba(39,128,227,1) 0%, rgba(102,16,242,1) 100%);
     border: 0px;
     border-radius: 15px;
     color: #f8f9fa;
     font-family: Roboto, sans-serif;
     font-size: medium;
-    padding: 1em 2em;
+    padding: 1rem;
 }
 #forminput {
     display: flex;
     flex-direction: row;
     flex-grow: 1;
     border: 1px solid #868e96;
-    padding: 10px;
+    padding: 1rem;
 }
 #grouplist_link {
     display: flex;
-    flex-direction: row;
     background: linear-gradient(135deg, rgba(39,128,227,1) 0%, rgba(102,16,242,1) 100%);
     border: 0px;
     border-radius: 15px;
     color: #f8f9fa;
     font-family: Roboto, sans-serif;
     font-size: medium;
-    padding: 1em 2em;
+    padding: 1rem;
     text-decoration: none;
+    text-align: center;
+}
+
+.formbuttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 10px;
+    box-sizing: border-box;
+}
+
+@media (aspect-ratio < 1) {
+    #formdiv {
+        flex-direction: column;
+        row-gap: 10px;
+    }
 }
