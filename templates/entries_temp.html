@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Результаты поиска</title>
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+        <link href="{{ url_for('static', filename='entries_style.css') }}" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="entry_list">
+            {% for name, id in found.items() %}
+            <a class="entry_link" href="/schedule{{ link_type }}{{ id }}">{{ name }}</a>
+            {% endfor %}
+        </div>
+    </body>
+</html>

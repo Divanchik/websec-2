@@ -7,31 +7,44 @@ from sys import platform
 app = Flask(__name__)
 last_request_date = datetime.now()
 group_pattern = r"\d{4}(?:[- ]\d{6}D?)?"
-staff_pattern = r"(?: *[а-яА-ЯёЁ]+){1,3}"
+
+
+def staff_search(req: str):
+    req = req.strip()
+    info = {}
+    found = {}
+    with open("data_staff.json", encoding='utf-8') as f: info = load(f)
+    for name, id in info.items():
+        if re.search(f"{req} |{req}$", name) is not None:
+            found[name] = id
+    return found
+
+
+def group_search(req: str):
+    req = req.strip()
+    info = {}
+    found = {}
+    with open("data_groups.json", encoding='utf-8') as f: info = load(f)
+    for facname in info.keys():
+        for title, id in info[facname]['groups'].items():
+            if title.find(req) >= 0:
+                found['title'] = id
+    return found
 
 
 def search(req: str):
     groupreq = re.findall(group_pattern, req)
-    staffreq = re.findall(staff_pattern, req)
-    print(groupreq, staffreq, "found matches")
 
     if len(groupreq) > 0: # if group requested
-        with open("data_groups.json", encoding='utf-8') as f:
-            info = load(f)
-        for fac in info.values():
-            for gn, gi in fac['groups'].items():
-                if gn.find(groupreq[0]) >= 0:
-                    return f"?groupId={gi}"
-    
-    elif len(staffreq) > 0: # if staff requested
-        with open("data_staff.json", encoding='utf-8') as f:
-            info = load(f)
-        for sn, si in info.items():
-            if re.search(f"{staffreq[0].strip()} |{staffreq[0].strip()}$", sn) is not None:
-                return f"?staffId={si}"
-    
-    print("No match for group or staff pattern!")
-    return None
+        found = group_search(req)
+    else:
+        found = staff_search(req)
+    if len(found.values()) == 0: return None, None
+    print(f"[search] found {len(found.values())} entries")
+
+    if len(groupreq) > 0:
+        return "?groupId=", found
+    return "?staffId=", found
 
 
 @app.route("/grouplist") # Справочник групп
@@ -76,12 +89,15 @@ def get_schedule():
 def main():
     sreq = request.args.getlist("SearchRequest")
     if len(sreq) == 0: return render_template('index.html')
+    print(f"[/] search request ({sreq[0]})")
+    link_type, found = search(sreq[0])
 
-    res_id = search(sreq[0])
-    if res_id == None:
+    if link_type == None:
         print("Unable to find requested schedule!")
         return render_template('index.html')
-    return redirect(f"/schedule{res_id}")
+    elif len(found.values()) == 1:
+        return redirect(f"/schedule{link_type}{found.values()[0]}")
+    return render_template("entries_temp.html", link_type=link_type, found=found)
 
 
 if __name__ == "__main__":

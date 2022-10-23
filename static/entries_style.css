@@ -1,0 +1,25 @@
+.entry_list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 1rem;
+}
+
+.entry_link {
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    border: 1px #2780e3 solid;
+    text-decoration: none;
+    padding: .5rem;
+
+    font-family: Roboto, sans-serif;
+    font-size: medium;
+    font-weight: 400;
+    color: #2780e3;
+}
+
+.entry_link:hover {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 123, 255, .15);
+    transform: scale(1.01);
+}
