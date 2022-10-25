@@ -20,7 +20,7 @@
             "17"
         ],
         [
-            "",
+            "weekday-active",
             "вт",
             "18"
         ],
@@ -40,7 +40,7 @@
             "21"
         ],
         [
-            "weekday-active",
+            "",
             "сб",
             "22"
         ]
@@ -57,7 +57,7 @@
                     "lessons": []
                 },
                 {
-                    "is_showing": "",
+                    "is_showing": "s_item_show",
                     "lessons": []
                 },
                 {
@@ -81,7 +81,7 @@
                     ]
                 },
                 {
-                    "is_showing": "s_item_show",
+                    "is_showing": "",
                     "lessons": []
                 }
             ]
@@ -97,7 +97,7 @@
                     "lessons": []
                 },
                 {
-                    "is_showing": "",
+                    "is_showing": "s_item_show",
                     "lessons": []
                 },
                 {
@@ -121,7 +121,7 @@
                     ]
                 },
                 {
-                    "is_showing": "s_item_show",
+                    "is_showing": "",
                     "lessons": []
                 }
             ]

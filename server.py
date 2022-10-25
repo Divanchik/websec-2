@@ -15,7 +15,7 @@ def staff_search(req: str):
     found = {}
     with open("data_staff.json", encoding='utf-8') as f: info = load(f)
     for name, id in info.items():
-        if re.search(f"{req} |{req}$", name) is not None:
+        if re.search(f"{req} |{req}$", name, flags=re.IGNORECASE) is not None:
             found[name] = id
     return found
 
