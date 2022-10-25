@@ -96,7 +96,8 @@ def main():
         print("Unable to find requested schedule!")
         return render_template('index.html')
     elif len(found.values()) == 1:
-        return redirect(f"/schedule{link_type}{found.values()[0]}")
+        for i in found.values():
+            return redirect(f"/schedule{link_type}{i}")
     return render_template("entries_temp.html", link_type=link_type, found=found)
 
 

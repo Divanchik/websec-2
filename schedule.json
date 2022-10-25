@@ -1,5 +1,5 @@
 {
-    "title": "Сергеев Александр Владиславович",
+    "title": "6411-100503D",
     "weeks": [
         7,
         8,
@@ -48,13 +48,141 @@
     "rows": [
         {
             "timespan": [
-                "15:15",
-                "16:50"
+                "08:00",
+                "09:35"
             ],
             "items": [
                 {
                     "is_showing": "",
                     "lessons": []
+                },
+                {
+                    "is_showing": "s_item_show",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "",
+                    "lessons": [
+                        {
+                            "type": "2",
+                            "title": " Безопасность сетей ЭВМ",
+                            "place": " 101а - 3",
+                            "staffid": "?staffId=259269374",
+                            "staff": " Ротенштейн И.В. "
+                        }
+                    ]
+                },
+                {
+                    "is_showing": "",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "",
+                    "lessons": [
+                        {
+                            "type": "2",
+                            "title": " Базы данных",
+                            "place": " 610 - 18",
+                            "staffid": "?staffId=364272302",
+                            "staff": " Агафонов А.А. "
+                        }
+                    ]
+                },
+                {
+                    "is_showing": "",
+                    "lessons": [
+                        {
+                            "type": "1",
+                            "title": " Цифровая обработка сигналов",
+                            "place": " ON-LINE - 18",
+                            "staffid": "?staffId=432837452",
+                            "staff": " Юзькив Р.Р. "
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "timespan": [
+                "09:45",
+                "11:20"
+            ],
+            "items": [
+                {
+                    "is_showing": "",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "s_item_show",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "",
+                    "lessons": [
+                        {
+                            "type": "2",
+                            "title": " Безопасность сетей ЭВМ",
+                            "place": " 101а - 3",
+                            "staffid": "?staffId=259269374",
+                            "staff": " Ротенштейн И.В. "
+                        }
+                    ]
+                },
+                {
+                    "is_showing": "",
+                    "lessons": [
+                        {
+                            "type": "4",
+                            "title": " Военная подготовка",
+                            "place": "",
+                            "staffid": "",
+                            "staff": ""
+                        }
+                    ]
+                },
+                {
+                    "is_showing": "",
+                    "lessons": [
+                        {
+                            "type": "2",
+                            "title": " Базы данных",
+                            "place": " 610 - 18",
+                            "staffid": "?staffId=364272302",
+                            "staff": " Агафонов А.А. "
+                        }
+                    ]
+                },
+                {
+                    "is_showing": "",
+                    "lessons": [
+                        {
+                            "type": "1",
+                            "title": " Безопасность сетей ЭВМ",
+                            "place": " ON-LINE - 18",
+                            "staffid": "?staffId=123278664",
+                            "staff": " Кузнецов М.В. "
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "timespan": [
+                "11:30",
+                "13:05"
+            ],
+            "items": [
+                {
+                    "is_showing": "",
+                    "lessons": [
+                        {
+                            "type": "1",
+                            "title": " Методы оптимизации",
+                            "place": " ON-LINE - 18",
+                            "staffid": "?staffId=65417001",
+                            "staff": " Ковалев А.А. "
+                        }
+                    ]
                 },
                 {
                     "is_showing": "s_item_show",
@@ -70,19 +198,123 @@
                 },
                 {
                     "is_showing": "",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "",
                     "lessons": [
                         {
-                            "type": "2",
-                            "title": " Безопасность веб-приложений",
-                            "place": " 610 - 18",
-                            "staffid": "",
-                            "staff": ""
+                            "type": "1",
+                            "title": " Компьютерная алгебра",
+                            "place": " ON-LINE - 18",
+                            "staffid": "?staffId=333991624",
+                            "staff": " Веричев А.В. "
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "timespan": [
+                "13:30",
+                "15:05"
+            ],
+            "items": [
+                {
+                    "is_showing": "",
+                    "lessons": [
+                        {
+                            "type": "1",
+                            "title": " Базы данных",
+                            "place": " ON-LINE - 18",
+                            "staffid": "?staffId=364272302",
+                            "staff": " Агафонов А.А. "
+                        }
+                    ]
+                },
+                {
+                    "is_showing": "s_item_show",
+                    "lessons": [
+                        {
+                            "type": "3",
+                            "title": " Методы оптимизации",
+                            "place": " 219 - 14",
+                            "staffid": "?staffId=65417001",
+                            "staff": " Ковалев А.А. "
                         }
                     ]
                 },
                 {
                     "is_showing": "",
                     "lessons": []
+                },
+                {
+                    "is_showing": "",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "",
+                    "lessons": []
+                }
+            ]
+        },
+        {
+            "timespan": [
+                "15:15",
+                "16:50"
+            ],
+            "items": [
+                {
+                    "is_showing": "",
+                    "lessons": [
+                        {
+                            "type": "1",
+                            "title": " Безопасность веб-приложений",
+                            "place": " ON-LINE - 18",
+                            "staffid": "?staffId=304968461",
+                            "staff": " Юмаганов А.С. "
+                        }
+                    ]
+                },
+                {
+                    "is_showing": "s_item_show",
+                    "lessons": [
+                        {
+                            "type": "3",
+                            "title": " Философия",
+                            "place": " 337 - 5",
+                            "staffid": "",
+                            "staff": "Гапаров И.А."
+                        }
+                    ]
+                },
+                {
+                    "is_showing": "",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "",
+                    "lessons": [
+                        {
+                            "type": "1",
+                            "title": " Философия",
+                            "place": " ON-LINE - 18",
+                            "staffid": "?staffId=443996999",
+                            "staff": " Огнев А.Н. "
+                        }
+                    ]
                 }
             ]
         },
@@ -94,31 +326,39 @@
             "items": [
                 {
                     "is_showing": "",
-                    "lessons": []
+                    "lessons": [
+                        {
+                            "type": "1",
+                            "title": " Надёжность и качество программного обеспечения",
+                            "place": " ON-LINE - 18",
+                            "staffid": "?staffId=60125001",
+                            "staff": " Гашников М.В. "
+                        }
+                    ]
                 },
                 {
                     "is_showing": "s_item_show",
-                    "lessons": []
-                },
-                {
-                    "is_showing": "",
-                    "lessons": []
-                },
-                {
-                    "is_showing": "",
-                    "lessons": []
-                },
-                {
-                    "is_showing": "",
                     "lessons": [
                         {
-                            "type": "2",
-                            "title": " Безопасность веб-приложений",
-                            "place": " 610 - 18",
-                            "staffid": "",
-                            "staff": ""
+                            "type": "3",
+                            "title": " Цифровая обработка сигналов",
+                            "place": " 608 - 18",
+                            "staffid": "?staffId=432837452",
+                            "staff": " Юзькив Р.Р. "
                         }
                     ]
+                },
+                {
+                    "is_showing": "",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "",
+                    "lessons": []
+                },
+                {
+                    "is_showing": "",
+                    "lessons": []
                 },
                 {
                     "is_showing": "",
