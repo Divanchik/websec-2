@@ -78,10 +78,11 @@ def get_schedule():
     py_com = "python3" if platform == "linux" else "python"
     os.system(f"{py_com} schedule.py \"https://ssau.ru/rasp?{id_type}={id_val}{option_week}{option_day}\"")
     with open("schedule.json", encoding='utf-8') as f: info = load(f)
+    if len(info['weeks']) == 0: return redirect("/")
 
     if len(info) == 0:
         print("No schedule or not implemented error!")
-        return render_template('index.html')
+        return redirect("/")
     return render_template('schedule_temp.html', info=info, id_type=id_type, id_val=id_val)
         
     
