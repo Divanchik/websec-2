@@ -75,7 +75,7 @@ def get_schedule():
     weekday = request.args.getlist("selectedWeekday")
     option_week = "" if len(week) == 0 else f"&selectedWeek={week[0]}"
     option_day = "" if len(weekday) == 0 else f"&selectedWeekday={weekday[0]}"
-    py_com = "python3" if platform == "linux" else "win32"
+    py_com = "python3" if platform == "linux" else "python"
     os.system(f"{py_com} schedule.py \"https://ssau.ru/rasp?{id_type}={id_val}{option_week}{option_day}\"")
     with open("schedule.json", encoding='utf-8') as f: info = load(f)
 
